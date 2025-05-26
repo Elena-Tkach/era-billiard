@@ -103,7 +103,7 @@ h1, h2, h3, .logo-text {
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script>
+    <!-- <script>
       const cue = document.getElementById("cue");
       const ball = document.getElementById("ball");
 
@@ -169,6 +169,80 @@ h1, h2, h3, .logo-text {
           });
         }
       });
-    </script>
+    </script> -->
+
+    <script>
+  const cue = document.getElementById("cue");
+  const ball = document.getElementById("ball");
+
+  let cueAngle = 0;
+  const cueLength = 200;
+  let mouseX = 0, mouseY = 0;
+
+  // 💻 Движение мыши
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // 📱 Движение пальцем
+  document.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
+    mouseX = touch.clientX;
+    mouseY = touch.clientY;
+  });
+
+  gsap.ticker.add(() => {
+    const ballRect = ball.getBoundingClientRect();
+    const ballCenterX = ballRect.left + ballRect.width / 2;
+    const ballCenterY = ballRect.top + ballRect.height / 2;
+
+    cueAngle = Math.atan2(ballCenterY - mouseY, ballCenterX - mouseX);
+
+    const cueX = mouseX - cue.offsetWidth / 2;
+    const cueY = mouseY - cue.offsetHeight / 2;
+
+    gsap.to(cue, {
+      duration: 0.1,
+      left: cueX,
+      top: cueY,
+      rotate: (cueAngle * 180) / Math.PI,
+      ease: "power2.out",
+    });
+  });
+
+  function shootBall() {
+    const tipX = mouseX + Math.cos(cueAngle) * (cue.offsetWidth / 2);
+    const tipY = mouseY + Math.sin(cueAngle) * (cue.offsetWidth / 2);
+
+    const ballRect = ball.getBoundingClientRect();
+    const ballCenterX = ballRect.left + ballRect.width / 2;
+    const ballCenterY = ballRect.top + ballRect.height / 2;
+
+    const distanceToBall = Math.hypot(tipX - ballCenterX, tipY - ballCenterY);
+
+    if (distanceToBall < 30) {
+      let dx = Math.cos(cueAngle);
+      let dy = Math.sin(cueAngle);
+      if (dy < 0) dy = 0;
+
+      const distance = 800;
+
+      gsap.to(ball, {
+        x: `+=${dx * distance}`,
+        y: `+=${dy * distance}`,
+        duration: 0.7,
+        ease: "power4.out",
+      });
+    }
+  }
+
+  // 💻 Клик мышью
+  document.addEventListener("click", shootBall);
+
+  // 📱 Касание на мобильном
+  document.addEventListener("touchend", shootBall);
+</script>
+
   </body>
 </html>
