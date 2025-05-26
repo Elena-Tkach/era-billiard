@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Billiard Cue Animation</title>
     <style>
@@ -15,28 +17,32 @@
         overflow: hidden;
       }
       /* Основной текст */
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-}
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+      }
 
-/* Заголовки */
-h1, h2, h3, .logo-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800; /* ExtraBold */
-}
-
+      /* Заголовки */
+      h1,
+      h2,
+      h3,
+      .logo-text {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800; /* ExtraBold */
+      }
 
       section {
+    
         position: relative;
       }
 
       .container-text {
         z-index: 10;
         position: absolute;
-        top: 30%;
-        left: 60%;
-        transform: translate3d(-30%, -60%, 0);
+        top: 50%;
+        left: 20%;
+      
+        transform: translate3d(-50%, -20%, 0);
         color: white;
         font-family: Arial, sans-serif;
       }
@@ -56,6 +62,13 @@ h1, h2, h3, .logo-text {
       }
       .table {
         position: relative;
+        /* top: 0; 
+        left: 0;
+        bottom: 0;
+        right: 0; */
+        width: 100%;
+        height: 100%;
+        z-index: 1;
         width: 100vw;
         height: 100vh;
         background: url("img/table.png") center/cover no-repeat;
@@ -81,20 +94,61 @@ h1, h2, h3, .logo-text {
         color: #d3aa39;
         text-decoration: none;
       }
+
+      @media (max-width: 768px) {
+        .container-text {
+       
+       top: 20%;
+        left: 20%;
+        transform: translate3d(-20%, -20%, 0)
+      }
+        #ball {
+          width: 30px;
+          height: 30px;
+        }
+
+        #cue {
+          width: 160px;
+          height: 12px;
+        }
+
+        .container-text h1 {
+        font-size: 1rem;
+        line-height: 1;
+        margin: 0;
+      }
+
+      p {
+        font-size: 0.8rem;
+        line-height: 1;}
+      }
     </style>
   </head>
   <body>
     <section>
-       <img class="logo" src="img/26.png" alt="logo">
+      <img class="logo" src="img/26.png" alt="logo" />
       <div class="container-text">
         <h1>Era-Billiard</h1>
         <p>Открытие 15 июня 2025г.</p>
-        <p>Будем Вас ждать по адресу: г. Алматы. ул. бла-бла д.2 </p>
+        <p>Будем Вас ждать по адресу: г. Алматы. ул. бла-бла д.2</p>
         <p>Телефон: +7 777 777 77 77</p>
-        <p>Пишите нам в Telegram: <a href="https://t.me/era_billiard" target="_blank">@era_billiard</a></p>
-        <p>Пишите нам в WhatsApp: <a href="https://wa.me/77777777777" target="_blank">+7 777 777 77 77</a></p>
-        <p>Пишите нам в Instagram: <a href="https://www.instagram.com/era_billiard/" target="_blank">@era_billiard</a></p>
-        <p>Пишите нам на почту: <a href="mailto: ">info@era_billiard.kz</a></p>                               
+        <p>
+          Пишите нам в Telegram:
+          <a href="https://t.me/era_billiard" target="_blank">@era_billiard</a>
+        </p>
+        <p>
+          Пишите нам в WhatsApp:
+          <a href="https://wa.me/77777777777" target="_blank"
+            >+7 777 777 77 77</a
+          >
+        </p>
+        <p>
+          Пишите нам в Instagram:
+          <a href="https://www.instagram.com/era_billiard/" target="_blank"
+            >@era_billiard</a
+          >
+        </p>
+        <p>Пишите нам на почту: <a href="mailto: ">info@era_billiard.kz</a></p>
       </div>
       <div class="table">
         <img src="img/ball.png" id="ball" alt="Ball" />
@@ -103,7 +157,8 @@ h1, h2, h3, .logo-text {
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <!-- <script>
+
+    <script>
       const cue = document.getElementById("cue");
       const ball = document.getElementById("ball");
 
@@ -112,20 +167,26 @@ h1, h2, h3, .logo-text {
       let mouseX = 0,
         mouseY = 0;
 
+      // 💻 Движение мыши
       document.addEventListener("mousemove", (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
       });
 
+      // 📱 Движение пальцем
+      document.addEventListener("touchmove", (e) => {
+        const touch = e.touches[0];
+        mouseX = touch.clientX;
+        mouseY = touch.clientY;
+      });
+
       gsap.ticker.add(() => {
-        // Центр шара
         const ballRect = ball.getBoundingClientRect();
         const ballCenterX = ballRect.left + ballRect.width / 2;
         const ballCenterY = ballRect.top + ballRect.height / 2;
 
         cueAngle = Math.atan2(ballCenterY - mouseY, ballCenterX - mouseX);
 
-        // Центр кия по координатам мыши
         const cueX = mouseX - cue.offsetWidth / 2;
         const cueY = mouseY - cue.offsetHeight / 2;
 
@@ -138,8 +199,7 @@ h1, h2, h3, .logo-text {
         });
       });
 
-      document.addEventListener("click", () => {
-        // Рассчитываем кончик кия с учётом угла
+      function shootBall() {
         const tipX = mouseX + Math.cos(cueAngle) * (cue.offsetWidth / 2);
         const tipY = mouseY + Math.sin(cueAngle) * (cue.offsetWidth / 2);
 
@@ -155,8 +215,6 @@ h1, h2, h3, .logo-text {
         if (distanceToBall < 30) {
           let dx = Math.cos(cueAngle);
           let dy = Math.sin(cueAngle);
-
-          // ограничим движение: только по нижней половине круга (вниз по экрану)
           if (dy < 0) dy = 0;
 
           const distance = 800;
@@ -168,81 +226,13 @@ h1, h2, h3, .logo-text {
             ease: "power4.out",
           });
         }
-      });
-    </script> -->
+      }
 
-    <script>
-  const cue = document.getElementById("cue");
-  const ball = document.getElementById("ball");
+      // 💻 Клик мышью
+      document.addEventListener("click", shootBall);
 
-  let cueAngle = 0;
-  const cueLength = 200;
-  let mouseX = 0, mouseY = 0;
-
-  // 💻 Движение мыши
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  // 📱 Движение пальцем
-  document.addEventListener("touchmove", (e) => {
-    const touch = e.touches[0];
-    mouseX = touch.clientX;
-    mouseY = touch.clientY;
-  });
-
-  gsap.ticker.add(() => {
-    const ballRect = ball.getBoundingClientRect();
-    const ballCenterX = ballRect.left + ballRect.width / 2;
-    const ballCenterY = ballRect.top + ballRect.height / 2;
-
-    cueAngle = Math.atan2(ballCenterY - mouseY, ballCenterX - mouseX);
-
-    const cueX = mouseX - cue.offsetWidth / 2;
-    const cueY = mouseY - cue.offsetHeight / 2;
-
-    gsap.to(cue, {
-      duration: 0.1,
-      left: cueX,
-      top: cueY,
-      rotate: (cueAngle * 180) / Math.PI,
-      ease: "power2.out",
-    });
-  });
-
-  function shootBall() {
-    const tipX = mouseX + Math.cos(cueAngle) * (cue.offsetWidth / 2);
-    const tipY = mouseY + Math.sin(cueAngle) * (cue.offsetWidth / 2);
-
-    const ballRect = ball.getBoundingClientRect();
-    const ballCenterX = ballRect.left + ballRect.width / 2;
-    const ballCenterY = ballRect.top + ballRect.height / 2;
-
-    const distanceToBall = Math.hypot(tipX - ballCenterX, tipY - ballCenterY);
-
-    if (distanceToBall < 30) {
-      let dx = Math.cos(cueAngle);
-      let dy = Math.sin(cueAngle);
-      if (dy < 0) dy = 0;
-
-      const distance = 800;
-
-      gsap.to(ball, {
-        x: `+=${dx * distance}`,
-        y: `+=${dy * distance}`,
-        duration: 0.7,
-        ease: "power4.out",
-      });
-    }
-  }
-
-  // 💻 Клик мышью
-  document.addEventListener("click", shootBall);
-
-  // 📱 Касание на мобильном
-  document.addEventListener("touchend", shootBall);
-</script>
-
+      // 📱 Касание на мобильном
+      document.addEventListener("touchend", shootBall);
+    </script>
   </body>
 </html>
