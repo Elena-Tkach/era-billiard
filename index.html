@@ -1,238 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Era Billiard</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Open+Sans:wght@400;600&display=swap"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-
-    <title>Billiard Cue Animation</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-      /* Основной текст */
-      body {
-        font-family: "Open Sans", sans-serif;
-        font-weight: 400;
-      }
-
-      /* Заголовки */
-      h1,
-      h2,
-      h3,
-      .logo-text {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 800; /* ExtraBold */
-      }
-
-      section {
-    
-        position: relative;
-      }
-
-      .container-text {
-        z-index: 10;
-        position: absolute;
-        top: 50%;
-        left: 20%;
-      
-        transform: translate3d(-50%, -20%, 0);
-        color: white;
-        font-family: Arial, sans-serif;
-      }
-      .container-text h1 {
-        font-size: 2.5rem;
-        line-height: 1;
-        margin: 0;
-      }
-      .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 10;
-        width: 100px;
-        height: auto;
-        /* margin-bottom: 20px; */
-      }
-      .table {
-        position: relative;
-        /* top: 0; 
-        left: 0;
-        bottom: 0;
-        right: 0; */
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        width: 100vw;
-        height: 100vh;
-        background: url("img/table.png") center/cover no-repeat;
-      }
-      #ball,
-      #cue {
-        position: absolute;
-        pointer-events: none;
-      }
-      #ball {
-        width: 60px;
-        height: 60px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-      #cue {
-        width: 600px;
-        height: 30px;
-        transform-origin: center center;
-      }
-      a {
-        color: #d3aa39;
-        text-decoration: none;
-      }
-
-      @media (max-width: 768px) {
-        .container-text {
-       
-       top: 20%;
-        left: 20%;
-        transform: translate3d(-20%, -20%, 0)
-      }
-        #ball {
-          width: 30px;
-          height: 30px;
-        }
-
-        #cue {
-          width: 160px;
-          height: 12px;
-        }
-
-        .container-text h1 {
-        font-size: 1rem;
-        line-height: 1;
-        margin: 0;
-      }
-
-      p {
-        font-size: 0.8rem;
-        line-height: 1;}
-      }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Playfair+Display:ital,wght@0,400;1,500&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
-    <section>
-      <img class="logo" src="img/26.png" alt="logo" />
-      <div class="container-text">
-        <h1>Era-Billiard</h1>
-        <p>Открытие 15 июня 2025г.</p>
-        <p>Будем Вас ждать по адресу: г. Алматы. ул. бла-бла д.2</p>
-        <p>Телефон: +7 777 777 77 77</p>
-        <p>
-          Пишите нам в Telegram:
-          <a href="https://t.me/era_billiard" target="_blank">@era_billiard</a>
-        </p>
-        <p>
-          Пишите нам в WhatsApp:
-          <a href="https://wa.me/77777777777" target="_blank"
-            >+7 777 777 77 77</a
-          >
-        </p>
-        <p>
-          Пишите нам в Instagram:
-          <a href="https://www.instagram.com/era_billiard/" target="_blank"
-            >@era_billiard</a
-          >
-        </p>
-        <p>Пишите нам на почту: <a href="mailto: ">info@era_billiard.kz</a></p>
+    <header class="header py-3 px-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="header-logo">
+          <a href="/" class="logo-link">
+            <img src="img/26.png" alt="Era Billiard Logo" class="logo" />
+          </a>
+        </div>
+        <button class="btn btn-menu" id="burgerBtn">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Mobile menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <button class="close-btn" id="closeMenu">&times;</button>
+          <nav class="">
+            <ul
+              class="list-style-none d-flex flex-column text-start p-4 gap-3 nav-header flex-md-row text-md-end"
+            >
+              <li class="item">
+                <a href="#about" class="nav-link">О клубе</a>
+              </li>
+
+              <li class="item">
+                <a href="#gallery" class="nav-link">Галерея</a>
+              </li>
+
+              <li class="item"><a href="#prices" class="nav-link">Цены</a></li>
+
+              <li class="item">
+                <a href="#contacts" class="nav-link">Контакты</a>
+              </li>
+
+              <li class="item">
+                <a href="#booking" class="nav-link">Бронирование</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <div class="table">
-        <img src="img/ball.png" id="ball" alt="Ball" />
-        <img src="img/kii.png" id="cue" alt="Cue" />
+    </header>
+
+    <!-- HERO -->
+    <section class="text-center position-relative intro">
+      <div class="container z-index-2 position-relative">
+        <h1 class="white title">
+          Твоя игра <br />
+          начинается здесь
+        </h1>
+
+        <a href="#booking" class="btn p-2 btn-gold mt-3">Забронировать стол</a>
+        <!-- <p class="lead">VIP-зал, турниры, уют и атмосфера</p> -->
+        <address class="mt-5 lead">
+          <p class="text">📍 г. Алматы, ул. Санаторий Алматы, д. 1А</p>
+
+          📞
+          <a href="tel:+77001234567" class="text gold">+7 (700) 123-45-67</a>
+          <p class="text">⏰ Ежедневно с 12:00 до 02:00</p>
+
+          <ul
+            class="social-list list-unstyled d-flex gap-3 justify-content-center mt-3"
+          >
+            <li>
+              <a
+                href="https://instagram.com/erabilliard"
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://tiktok.com/@erabilliard"
+                target="_blank"
+                aria-label="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/77001234567"
+                target="_blank"
+                aria-label="WhatsApp"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://t.me/erabilliard"
+                target="_blank"
+                aria-label="Telegram"
+              >
+                <i class="fab fa-telegram"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://youtube.com/erabilliard"
+                target="_blank"
+                aria-label="YouTube"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </li>
+          </ul>
+        </address>
+      </div>
+
+      <div
+        class="position-absolute top-0 start-0 left-0 bottom-0 right-0 bg-intro"
+        style="z-index: -1"
+      ></div>
+    </section>
+
+    <!-- БРОНИРОВАНИЕ -->
+    <section id="booking" class="container text-center">
+      <h2 class="gold mb-4">Забронировать стол</h2>
+      <form class="row g-3 justify-content-center">
+        <div class="col-md-3 col-10">
+          <input type="text" class="form-control" placeholder="Имя" />
+        </div>
+        <div class="col-md-3 col-10">
+          <input type="tel" class="form-control" placeholder="Телефон" />
+        </div>
+        <div class="col-md-3 col-10">
+          <input type="datetime-local" class="form-control" />
+        </div>
+        <div class="col-md-2 col-10 d-grid">
+          <button type="submit" class="btn btn-gold">Отправить</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- О КЛУБЕ -->
+    <section id="about" class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h2 class="gold">О клубе</h2>
+          <p>
+            Era Billiard — это не просто клуб, это пространство для настоящих
+            ценителей игры, уюта и высокого сервиса. У нас есть всё для
+            комфортного отдыха: от классических столов до приватного VIP-зала.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img
+            src="img/men.png"
+            alt="Интерьер клуба"
+            class="img-fluid rounded"
+          />
+        </div>
       </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- ФОТО -->
+    <section id="gallery" class="container text-center">
+      <h2 class="gold mb-4">Атмосфера клуба</h2>
+      <div class="row g-3">
+        <div class="col-6 col-md-4">
+          <img src="img/men.png" class="img-fluid rounded" />
+        </div>
+        <div class="col-6 col-md-4">
+          <img src="img/men-2.png" class="img-fluid rounded" />
+        </div>
+        <div class="col-6 col-md-4">
+          <img src="img/men.png" class="img-fluid rounded" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ЦЕНЫ -->
+    <section id="prices" class="container">
+      <h2 class="gold text-center mb-4">Цены</h2>
+      <ul class="row list-no-style">
+        <li class="col-md-4 mb-4 mb-md-0">
+          <div class="card-style p-4 rounded text-center h-100">
+            <h3>Стандарт</h3>
+            <p>2000 ₸ / час</p>
+            <p>Игровой зал, напитки</p>
+          </div>
+        </li>
+        <li class="col-md-4 mb-4 mb-md-0">
+          <div class="card-style p-4 rounded text-center h-100">
+            <h3>VIP-зал</h3>
+            <p>5000 ₸ / час</p>
+            <p>Уединённый зал, обслуживание</p>
+          </div>
+        </li>
+        <li class="col-md-4">
+          <div class="card-style p-4 rounded text-center h-100">
+            <h3>Мероприятие</h3>
+            <p>по договорённости</p>
+            <p>Аренда клуба, фуршет</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" class="container py-5">
+      <h2 class="gold text-center mb-4">Контакты</h2>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-4 mb-md-0">
+          <address>
+            <p class="mb-1">📍 г. Алматы, ул. Санаторий Алматы, д. 1А</p>
+            <p>
+              📞
+              <a href="tel:+77001234567" class="text-dark"
+                >+7 (700) 123-45-67</a
+              >
+            </p>
+            <p>⏰ Ежедневно с 12:00 до 02:00</p>
+          </address>
+        </div>
+        <div class="col-12 col-md-6">
+          <div style="position: relative; width: 100%; height: 300px">
+            <iframe
+              src="https://widgets.2gis.com/widget?type=firm&id=70000001042655635&options=card"
+              width="100%"
+              height="100%"
+              style="border: none"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="text-center mt-5 py-4 border-top">
+      <p class="mb-0">© Era Billiard 2025</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      const cue = document.getElementById("cue");
-      const ball = document.getElementById("ball");
+      const burgerBtn = document.getElementById("burgerBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMenu = document.getElementById("closeMenu");
 
-      let cueAngle = 0;
-      const cueLength = 200;
-      let mouseX = 0,
-        mouseY = 0;
-
-      // 💻 Движение мыши
-      document.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+      burgerBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("open");
       });
 
-      // 📱 Движение пальцем
-      document.addEventListener("touchmove", (e) => {
-        const touch = e.touches[0];
-        mouseX = touch.clientX;
-        mouseY = touch.clientY;
+      closeMenu.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
       });
-
-      gsap.ticker.add(() => {
-        const ballRect = ball.getBoundingClientRect();
-        const ballCenterX = ballRect.left + ballRect.width / 2;
-        const ballCenterY = ballRect.top + ballRect.height / 2;
-
-        cueAngle = Math.atan2(ballCenterY - mouseY, ballCenterX - mouseX);
-
-        const cueX = mouseX - cue.offsetWidth / 2;
-        const cueY = mouseY - cue.offsetHeight / 2;
-
-        gsap.to(cue, {
-          duration: 0.1,
-          left: cueX,
-          top: cueY,
-          rotate: (cueAngle * 180) / Math.PI,
-          ease: "power2.out",
-        });
-      });
-
-      function shootBall() {
-        const tipX = mouseX + Math.cos(cueAngle) * (cue.offsetWidth / 2);
-        const tipY = mouseY + Math.sin(cueAngle) * (cue.offsetWidth / 2);
-
-        const ballRect = ball.getBoundingClientRect();
-        const ballCenterX = ballRect.left + ballRect.width / 2;
-        const ballCenterY = ballRect.top + ballRect.height / 2;
-
-        const distanceToBall = Math.hypot(
-          tipX - ballCenterX,
-          tipY - ballCenterY
-        );
-
-        if (distanceToBall < 30) {
-          let dx = Math.cos(cueAngle);
-          let dy = Math.sin(cueAngle);
-          if (dy < 0) dy = 0;
-
-          const distance = 800;
-
-          gsap.to(ball, {
-            x: `+=${dx * distance}`,
-            y: `+=${dy * distance}`,
-            duration: 0.7,
-            ease: "power4.out",
-          });
-        }
-      }
-
-      // 💻 Клик мышью
-      document.addEventListener("click", shootBall);
-
-      // 📱 Касание на мобильном
-      document.addEventListener("touchend", shootBall);
     </script>
   </body>
 </html>
