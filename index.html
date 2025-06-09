@@ -13,12 +13,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+
   </head>
+  
   <body>
+    <div class="cursor"></div>
     <header class="header py-3 px-3">
       <div class="d-flex justify-content-between align-items-center">
         <div class="header-logo">
@@ -68,7 +67,7 @@
         </h1>
 
         <a href="#booking" class="btn p-2 btn-gold mt-3">Забронировать стол</a>
-        <!-- <p class="lead">VIP-зал, турниры, уют и атмосфера</p> -->
+
         <address class="mt-5 lead">
           <p class="text">📍 г. Алматы, ул. Санаторий Алматы, д. 1А</p>
 
@@ -132,6 +131,10 @@
         class="position-absolute top-0 start-0 left-0 bottom-0 right-0 bg-intro"
         style="z-index: -1"
       ></div>
+      <div class="ball-wrapper">
+        <div class="ball" id="ball"></div>
+      </div>
+      <div class="ground"></div>    
     </section>
 
     <!-- БРОНИРОВАНИЕ -->
@@ -166,7 +169,7 @@
         </div>
         <div class="col-md-6">
           <img
-            src="img/men.png"
+            src="img/men.jpg"
             alt="Интерьер клуба"
             class="img-fluid rounded"
           />
@@ -179,13 +182,13 @@
       <h2 class="gold mb-4">Атмосфера клуба</h2>
       <div class="row g-3">
         <div class="col-6 col-md-4">
-          <img src="img/men.png" class="img-fluid rounded" />
+          <img src="img/men2.jpg" class="img-fluid rounded" />
         </div>
         <div class="col-6 col-md-4">
-          <img src="img/men-2.png" class="img-fluid rounded" />
+          <img src="img/men3.jpg" class="img-fluid rounded" />
         </div>
         <div class="col-6 col-md-4">
-          <img src="img/men.png" class="img-fluid rounded" />
+          <img src="img/men4.jpg" class="img-fluid rounded" />
         </div>
       </div>
     </section>
@@ -236,14 +239,14 @@
         </div>
         <div class="col-12 col-md-6">
           <div style="position: relative; width: 100%; height: 300px">
-            <iframe
+            <!-- <iframe
               src="https://widgets.2gis.com/widget?type=firm&id=70000001042655635&options=card"
               width="100%"
               height="100%"
               style="border: none"
               allowfullscreen
               loading="lazy"
-            ></iframe>
+            ></iframe> -->
           </div>
         </div>
       </div>
@@ -257,17 +260,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      const burgerBtn = document.getElementById("burgerBtn");
-      const mobileMenu = document.getElementById("mobileMenu");
-      const closeMenu = document.getElementById("closeMenu");
+      const cursor = document.querySelector('.cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+});
 
-      burgerBtn.addEventListener("click", () => {
-        mobileMenu.classList.add("open");
-      });
+document.addEventListener('mousedown', () => cursor.classList.add('click'));
+document.addEventListener('mouseup', () => cursor.classList.remove('click'));
 
-      closeMenu.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-      });
+// Наведение на ссылки
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+  link.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+});
     </script>
+
+</body>
   </body>
 </html>

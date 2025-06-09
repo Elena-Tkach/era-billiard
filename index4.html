@@ -122,11 +122,62 @@
         }
       }
     </style>
+    <style>
+      .billiard-table {
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        background: #2e7d32;
+        overflow: hidden;
+      }
+
+      #cue,
+      #ball {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        transform-origin: center;
+        pointer-events: none;
+      }
+
+      #cue {
+        width: 600px;
+        height: 30px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      .hole {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: #000;
+        border-radius: 50%;
+      }
+
+      .hole.top-left {
+        top: 0;
+        left: 0;
+      }
+      .hole.top-right {
+        top: 0;
+        right: 0;
+      }
+      .hole.bottom-left {
+        bottom: 0;
+        left: 0;
+      }
+      .hole.bottom-right {
+        bottom: 0;
+        right: 0;
+      }
+    </style>
   </head>
   <body>
     <section>
       <img class="logo" src="img/26.png" alt="logo" />
-      <div class="container-text">
+      <!-- <div class="container-text">
         <h1>Era-Billiard</h1>
         <p>Открытие 15 июня 2025г.</p>
         <p>Будем Вас ждать по адресу: г. Алматы. ул. бла-бла д.2</p>
@@ -152,12 +203,21 @@
       <div class="table">
         <img src="img/ball.png" id="ball" alt="Ball" />
         <img src="img/kii.png" id="cue" alt="Cue" />
+      </div> -->
+      <div class="billiard-table">
+        <!-- <div class="hole top-left"></div>
+        <div class="hole top-right"></div>
+        <div class="hole bottom-left"></div>
+        <div class="hole bottom-right"></div> -->
+
+        <img src="img/kii.png" alt="Кий" id="cue" />
+        <img src="img/ball.png" alt="Шар" id="ball" />
       </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    <script>
+    <!-- <script>
       const cue = document.getElementById("cue");
       const ball = document.getElementById("ball");
 
@@ -232,6 +292,64 @@
 
       // 📱 Касание на мобильном
       document.addEventListener("touchend", shootBall);
+    </script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+      const cue = document.getElementById("cue");
+      const ball = document.getElementById("ball");
+
+      let mouseX = 0,
+        mouseY = 0,
+        angle = 0;
+
+      function updateCue(e) {
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+        mouseX = x;
+        mouseY = y;
+
+        const ballRect = ball.getBoundingClientRect();
+        const ballX = ballRect.left + ballRect.width / 2;
+        const ballY = ballRect.top + ballRect.height / 2;
+
+        angle = Math.atan2(ballY - y, ballX - x);
+
+        gsap.set(cue, {
+          left: `${x - 30}px`,
+          top: `${y - 30}px`,
+          rotate: `${(angle * 180) / Math.PI}deg`,
+        });
+      }
+
+      function shoot() {
+        const dx = Math.cos(angle);
+        const dy = Math.sin(angle);
+
+        let distance = 400;
+        let scale = 1;
+
+        // если удар вверх или вниз — шар уменьшается
+        if (Math.abs(dy) > Math.abs(dx)) {
+          scale = 0.3;
+          distance = 800;
+        }
+
+        gsap.to(ball, {
+          x: `+=${dx * distance}`,
+          y: `+=${dy * distance}`,
+          scale: scale,
+          duration: 1,
+          ease: "power4.out",
+        });
+      }
+
+      document.addEventListener("mousemove", updateCue);
+      document.addEventListener("touchmove", updateCue);
+
+      document.addEventListener("click", shoot);
+      document.addEventListener("touchend", shoot);
     </script>
   </body>
 </html>

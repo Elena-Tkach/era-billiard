@@ -35,7 +35,7 @@ img {
   padding: 0;
   margin: 0;
 }
-h1,
+
 h2.gold {
   font-family: "Playfair Display", serif;
   font-weight: 500;
@@ -43,6 +43,8 @@ h2.gold {
   text-transform: none;
 }
 .title {
+  font-weight: 800;
+  font-style: bold;
   font-size: 28px;
 }
 .header {
@@ -298,5 +300,103 @@ footer {
 
   .text {
     font-size: 1rem;
+  }
+}
+
+section {
+  position: relative;
+}
+
+.container-text {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+
+  transform: translate3d(-50%, -20%, 0);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.container-text h1 {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin: 0;
+}
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  width: 100px;
+  height: auto;
+  /* margin-bottom: 20px; */
+}
+
+.d-none {
+  display: none !important;
+}
+
+a {
+  color: #d3aa39;
+  text-decoration: none;
+}
+
+* {
+  cursor: none;
+}
+.btn {
+  cursor: none;
+}
+.cursor {
+  z-index: 1;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%) scale(1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background: rgba(179, 139, 86, 0.8);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+.cursor.click {
+  width: 40px;
+  height: 40px;
+}
+
+.cursor.hovered {
+  background-color: #f2d8b8; /* Тёплый золотистый оттенок при наведении */
+  transform: translate(-50%, -50%) scale(1.8);
+}
+
+@media (max-width: 768px) {
+  .container-text {
+    top: 20%;
+    left: 20%;
+    transform: translate3d(-20%, -20%, 0);
+  }
+  #ball {
+    width: 30px;
+    height: 30px;
+  }
+
+  #cue {
+    width: 160px;
+    height: 12px;
+  }
+
+  .container-text h1 {
+    font-size: 1rem;
+    line-height: 1;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.8rem;
+    line-height: 1;
   }
 }
