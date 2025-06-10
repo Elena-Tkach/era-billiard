@@ -1,6 +1,12 @@
+:root {
+  --primery-color: #b38b56;
+  --secondary-color: #f7f5f1;
+  --hover-color: #d3aa39;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #f7f5f1;
+  background-color: var(--secondary-color);
   color: #333333;
   margin: 0;
 }
@@ -67,7 +73,7 @@ h2.gold {
   right: -100%;
   width: 80%;
   height: 100vh;
-  background-color: #f7f5f1;
+  background-color: var(--secondary-color);
   z-index: 2000;
   transition: right 0.3s ease;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
@@ -88,13 +94,11 @@ h2.gold {
 
 .nav-link {
   color: #b38b56;
-  /* font-weight: bold; */
   text-transform: uppercase;
-  /* font-family: "Montserrat", sans-serif; */
 }
 
 .nav-link:hover {
-  color: #333;
+  color: var(--hover-color);
 }
 
 .btn-menu {
@@ -102,7 +106,7 @@ h2.gold {
   height: 50px;
 }
 .btn-menu:hover {
-  border-color: #b38b56;
+  border-color: var(--primery-color);
   height: 50px;
   width: 50px;
 }
@@ -112,13 +116,13 @@ h2.gold {
 }
 
 .close-btn:hover {
-  color: #b38b56;
+  color: var(--primery-color);
 }
 .navbar-toggler-icon {
   background-image: none; /* отключаем стандартную иконку */
   width: 24px;
   height: 2px;
-  background-color: #b38b56;
+  background-color: var(--primery-color);
   display: block;
   position: relative;
 }
@@ -126,7 +130,7 @@ h2.gold {
 .navbar-toggler-icon::before,
 .navbar-toggler-icon::after {
   content: "";
-  background-color: #b38b56;
+  background-color: var(--primery-color);
   width: 24px;
   height: 2px;
   position: absolute;
@@ -165,16 +169,16 @@ h2.gold {
 }
 
 .white {
-  color: #ffffffe5;
+  color: var(--secondary-color);
 }
 
 .gold {
-  color: #b38b56;
+  color: var(--primery-color);
 }
 
 .btn-gold {
-  background-color: #b38b56;
-  color: #ffffffe5;
+  background-color: var(--primery-color);
+  color: var(--secondary-color);
   border: none;
 
   letter-spacing: 0.4px;
@@ -192,7 +196,7 @@ section {
 
 .lead {
   font-size: 0.8rem;
-  color: #ffffffe5;
+  color: var(--secondary-color);
 }
 
 .card-style {
@@ -202,19 +206,86 @@ section {
 }
 
 footer {
-  background-color: #f0e8dc;
+  background-color: var(--secondary-color);
 }
 
 .social-list a {
-  color: #b38b56;
-  font-size: 1.5rem;
+  color: var(--primery-color);
+  font-size: 2rem;
   transition: color 0.3s;
 }
 
 .social-list a:hover {
-  color: #a27c4d;
+  color: #ecb777;
 }
 
+.a {
+  color: var(--primery-color);
+}
+
+.a:hover {
+  color: var(--hover-color);
+}
+
+.lead a:hover {
+  color: var(--hover-color);
+}
+
+.map-link {
+  position: absolute;
+  font-size: 10px;
+  padding-top: 45px;
+  text-align: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.socials-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.map-icon {
+  width: 20px;
+  height: 20px;
+  padding: 22px;
+  margin-right: 5px;
+  position: relative;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  transition: 0.3s ease;
+
+  border-radius: 50%;
+  transition: 0.6s;
+}
+
+.map-icon:nth-child(1) {
+  background-image: url("/img/yandex-maps.svg");
+}
+.map-icon:nth-child(2) {
+  background-image: url("/img/google-maps.svg");
+}
+.map-icon:nth-child(3) {
+  background-image: url("/img/gis-maps.svg");
+}
+
+@media (hover: hover) {
+  .map-icon:hover,
+  .map-icon:active,
+  .socials-icon:hover,
+  .socials-icon:active {
+    box-shadow: 0 0 10px 1px var(--primery-color);
+  }
+}
 /* Desktop / Tablet */
 @media (min-width: 768px) {
   .title {
@@ -341,62 +412,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  cursor: none;
-}
-.btn {
-  cursor: none;
-}
-.cursor {
-  z-index: 1;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 28px;
-  height: 28px;
-  transform: translate(-50%, -50%) scale(1);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  background: rgba(179, 139, 86, 0.8);
-  border-radius: 50%;
-  z-index: 9999;
-  pointer-events: none;
-  mix-blend-mode: difference;
-}
-.cursor.click {
-  width: 40px;
-  height: 40px;
-}
-
-.cursor.hovered {
-  background-color: #f2d8b8; /* Тёплый золотистый оттенок при наведении */
-  transform: translate(-50%, -50%) scale(1.8);
-}
-
-@media (max-width: 768px) {
-  .container-text {
-    top: 20%;
-    left: 20%;
-    transform: translate3d(-20%, -20%, 0);
-  }
-  #ball {
-    width: 30px;
-    height: 30px;
-  }
-
-  #cue {
-    width: 160px;
-    height: 12px;
-  }
-
-  .container-text h1 {
-    font-size: 1rem;
-    line-height: 1;
-    margin: 0;
-  }
-
-  p {
-    font-size: 0.8rem;
-    line-height: 1;
-  }
+a:hover {
+  color: #b38b56;
 }
