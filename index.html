@@ -57,10 +57,7 @@
               <li class="item">
                 <a href="#contacts" class="nav-link">Контакты</a>
               </li>
-<!-- 
-              <li class="item">
-                <a href="#booking" class="nav-link">Бронирование</a>
-              </li> -->
+
             </ul>
           </nav>
         </div>
@@ -188,14 +185,14 @@
     <section id="gallery" class="container text-center">
       <h2 class="gold mb-4">Атмосфера клуба</h2>
       <div class="row g-3">
-        <div class="col-6 col-md-4">
-          <img src="img/men2.jpg" class="img-fluid rounded" />
+        <div class="col-12 col-md-4">
+          <img src="img/video-poster.png" class="img-fluid rounded" />
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-4">
           <img src="img/men3.jpg" class="img-fluid rounded" />
         </div>
-        <div class="col-6 col-md-4">
-          <img src="img/men4.jpg" class="img-fluid rounded" />
+        <div class="col-12 col-md-4">
+          <img src="img/club.png" class="img-fluid rounded" />
         </div>
       </div>
     </section>
@@ -213,7 +210,7 @@
             </div>
             <div class="mb-3">
               <p class="gold">C 18:00 до 02:00 </p>
-              <p>5000 ₸ / час</p>
+              <p>3500 ₸ / час</p>
             </div>
             <p class="gold mb-4">После 02:00 – двойной тариф
             </p>
@@ -240,6 +237,45 @@
       </ul>
     </section>
 
+    <section class="py-5 bg-dark text-white">
+  <div class="container">
+    <h2 class="text-center mb-5">Меню ERA BILLIARD</h2>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- Меню 1 -->
+      <div class="col-12 col-md-4 text-center">
+        <img 
+          src="img/menu-1-enhanced.jpg" 
+          class="img-fluid rounded shadow menu-image" 
+          alt="Меню напитков ERA BILLIARD"
+          data-bs-toggle="modal" 
+          data-bs-target="#menuModal1">
+      </div>
+
+      <!-- Меню 2 -->
+      <div class="col-12 col-md-4 text-center">
+        <img 
+          src="img/menu-2-enhanced.jpg" 
+          class="img-fluid rounded shadow menu-image" 
+          alt="Меню крепких напитков ERA BILLIARD"
+          data-bs-toggle="modal" 
+          data-bs-target="#menuModal2">
+      </div>
+
+      <!-- Меню 3 -->
+      <div class="col-12 col-md-4 text-center">
+        <img 
+          src="img/menu-3-enhanced.jpg" 
+          class="img-fluid rounded shadow menu-image" 
+          alt="Меню кухни ERA BILLIARD"
+          data-bs-toggle="modal" 
+          data-bs-target="#menuModal3">
+      </div>
+
+    </div>
+  </div>
+</section>
     <!-- КОНТАКТЫ -->
     <section id="contacts" class="container py-5">
       <h2 class="gold text-center  mb-4">Контакты</h2>
@@ -335,6 +371,41 @@
     <footer class="text-center mt-5 py-4 border-top">
       <p class="mb-0">© Era Billiard 2025</p>
     </footer>
+
+   <!-- Модальное окно 1 -->
+<div class="modal fade" id="menuModal1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-dark position-relative">
+      
+      <!-- Кнопка-крестик -->
+      <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      
+      <!-- Картинка -->
+      <img src="img/menu-1-enhanced.jpg" class="img-fluid rounded" alt="Меню напитков">
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно 2 -->
+<div class="modal fade" id="menuModal2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-dark position-relative">
+      <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      <img src="img/menu-2-enhanced.jpg" class="img-fluid rounded" alt="Меню крепких напитков">
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно 3 -->
+<div class="modal fade" id="menuModal3" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-dark position-relative">
+      <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      <img src="img/menu-3-enhanced.jpg" class="img-fluid rounded" alt="Меню кухни">
+    </div>
+  </div>
+</div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

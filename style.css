@@ -193,6 +193,13 @@ h2.gold {
 section {
   padding: 40px 0;
 }
+.menu-image {
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+.menu-image:hover {
+  transform: scale(1.01);
+}
 
 .lead {
   font-size: 0.8rem;
